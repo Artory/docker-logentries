@@ -6,7 +6,6 @@ FROM node:0.12-onbuild
 MAINTAINER Rapid 7 - Logentries <support@logentries.com>
 
 WORKDIR /usr/src/app
-COPY package.json package.json
 COPY npm-shrinkwrap.json npm-shrinkwrap.json
 RUN npm install --production
 COPY index.js /usr/src/app/index.js
