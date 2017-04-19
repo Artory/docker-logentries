@@ -51,10 +51,10 @@ function start(opts) {
       token = statsToken;
     }
 
-    if (token) {
+    if (token && obj.line) {
       this.push(token);
       this.push(' ');
-      this.push(JSON.stringify({container: obj.name, line: obj.line}));
+      this.push(obj.line);
       this.push('\n');
     }
 
