@@ -82,6 +82,7 @@ function start(opts) {
   opts.events = events;
 
   if (opts.logs !== false && (logsToken || containersTokens)) {
+    opts.nameLabel = 'com.amazonaws.ecs.container-name';
     loghose = logFactory(opts);
     loghose.pipe(filter);
     streamsOpened++;
