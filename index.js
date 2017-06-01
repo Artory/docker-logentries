@@ -64,7 +64,6 @@ function start(opts) {
     }
 
     if (token && obj.line) {
-      console.log(obj.line);
       this.push(token);
       this.push(' ');
       this.push('c=' + obj.name + ' ' + obj.line);
