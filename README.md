@@ -33,6 +33,10 @@ The `-i/--statsinterval <STATSINTERVAL>` downsamples the logs sent to Logentries
 
 If you don't use `-a` a default ``host=`uname -n` `` value will be added.
 
+In a managed environment, container names may be obfuscated. 
+If there is a label that provides a better name for logging,
+it can be used instead: `--nameLabel com.amazonaws.ecs.container-name`.
+
 You can also filter the containers for which the logs/stats are
 forwarded with:
 
@@ -82,6 +86,10 @@ published. This follows the format 'name=value'.
 
 The `-i/--statsinterval` downsamples the logs sent to Logentries. It collects samples and averages them before sending to Logentries.
 
+In a managed environment, container names may be obfuscated. 
+If there is a label that provides a better name for logging,
+it can be used instead: `--nameLabel com.amazonaws.ecs.container-name`.
+
 You can also filter the containers for which the logs/stats are
 forwarded with:
 
@@ -104,6 +112,11 @@ var logentries = require('docker-logentries')({
   newline: true, // Split on newline delimited entries
   stats: true, // disable stats if false
   add: null, // an object whose properties will be added
+
+  // In a managed environment, container names may be obfuscated. 
+  // If there is a label that provides a better name for logging,
+  // provide the key here.
+  nameLabel: 'com.amazonaws.ecs.container-name',
 
   // the following options limit the containers being matched
   // so we can avoid catching logs for unwanted containers

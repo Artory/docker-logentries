@@ -64,6 +64,7 @@ function start(opts) {
     }
 
     if (token && obj.line) {
+      console.log(obj.line);
       this.push(token);
       this.push(' ');
       this.push('c=' + obj.name + ' ' + obj.line);
@@ -82,7 +83,6 @@ function start(opts) {
   opts.events = events;
 
   if (opts.logs !== false && (logsToken || containersTokens)) {
-    opts.nameLabel = 'com.amazonaws.ecs.container-name';
     loghose = logFactory(opts);
     loghose.pipe(filter);
     streamsOpened++;
@@ -192,6 +192,7 @@ function cli() {
     console.log('Usage: docker-logentries [-l LOGSTOKEN] [-k STATSTOKEN] [-e EVENTSTOKEN]\n' +
                 '                         [-t TOKEN] [--secure] [--json]\n' +
                 '                         [--no-newline] [--no-stats] [--no-logs] [--no-dockerEvents]\n' +
+                '                         [--nameLabel NAMELABEL]\n' +
                 '                         [-i STATSINTERVAL] [-a KEY=VALUE]\n' +
                 '                         [--matchByImage REGEXP] [--matchByName REGEXP]\n' +
                 '                         [--skipByImage REGEXP] [--skipByName REGEXP]\n' +
